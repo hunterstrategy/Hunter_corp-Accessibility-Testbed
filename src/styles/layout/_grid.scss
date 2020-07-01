@@ -1,0 +1,181 @@
+//BASIC FLEX RULES
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+
+    .flex-column {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: stretch;
+
+        .flex-item {
+            text-align: center;
+            padding: 6px;
+            margin: 6px;
+            flex: 1 1 auto;
+        }
+    }
+}
+
+
+
+// SPLASH FLEX RULES
+.flex-splash {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    .flex-splash-text {
+        order: 0;
+        flex: 1 1 400px;
+        align-self: center;
+        flex-direction: column;
+        display: flex;
+    }
+
+    .flex-splash-image {
+        flex-direction: column;
+        display: flex;
+        order: 0;
+        flex: 1 1 auto;
+        align-self: flex-end;
+
+        @media (max-width: 990px) {
+            display: none;
+        }
+    }
+}
+
+
+
+@media (max-width: 618px) {
+    .service-section .components {
+        flex-wrap: wrap;
+    }
+}
+
+.scroll-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    .scroll-menu-item {
+        flex: 0 0 auto;
+
+        .hunter-card {
+            width: 40rem;
+        }
+    }
+}
+
+.footer-container {
+    .footer-column {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        .footer-row {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+
+            .footer-item {
+                text-align: center;
+                padding: 6px;
+                margin: 6px;
+                flex: 1 1 auto;
+            }
+        }
+    }
+}
+
+//Rules for news newsfeed
+.news-home.flex-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+
+    .flex-row {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        .flex-item {
+            height: 300px;
+            width: 300px;
+        }
+    }
+}
+
+@media (max-width: 618px) {
+    .news-home.flex-column {
+        display: none;
+    }
+}
+
+@media (min-width: 1208px) {
+    .news-home.flex-column .flex-row .flex-item {
+        flex: 1 1 auto;
+    }
+}
+
+.news-post {
+    display: flex;
+}
+
+//BASIC NEWS FLEX RULES
+.news,
+.post {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.news-body,
+.post-body {
+    display: flex;
+    flex: 1;
+}
+
+.news-content,
+.post-content {
+    flex: 1;
+}
+
+.news-nav {
+    flex: 0 1 18em;
+    display: none;
+    flex-direction: column;
+}
+
+/* if screen size gets wider than 860 */
+
+@media screen and (min-width:860px) {
+    .news-nav {
+        display: flex;
+    }
+}

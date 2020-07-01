@@ -1,0 +1,103 @@
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholders';
+
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'layout/grid';
+
+@import 'themes/dark';
+
+@import 'shame';
+
+#header {
+    width: auto;
+}
+
+#body {
+    margin-top: 88px;
+}
+
+.app-site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .body-content {
+    flex: 1;
+  }
+
+// BASIC IMAGE DEFINTIONS
+.background-image {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.inline-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+
+//HUNTER NavBar
+@media (min-width: 864px) {
+    .navbar-brand-main {
+        display: inline;
+    }
+
+    .navbar-brand-alt {
+        display: none;
+    }
+}
+
+.hunter-navbar {
+    background-color: $darker-orange;
+    background: linear-gradient(to right, rgb(208, 85, 39), $darker-orange 10%, $darker-orange 90%, rgb(208, 85, 39));
+    font-size: 1rem;
+}
+.navbar-toggler{
+    
+    border: 2px solid $white;
+    .hunter-nav-list{
+        color: $white;
+    }
+}
+.navbar-brand-main {
+    display: none;
+}
+
+.navbar-brand-alt {
+    display: inline;
+}
+.navbar-brand {
+    height: auto;
+}
+
+.navbar-fixed-top {
+    min-height: 80px;
+}
+
+.navbar-nav>li>span>a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 80px;
+}
+
+@media (max-width: 990px) {
+    .navbar-nav>li>span>a {
+        line-height: 20px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        font-size: 2rem;
+
+    }
+}
+
+
+
