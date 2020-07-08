@@ -9,11 +9,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
 import { TableSelectionExample } from './example/example.component';
+import { MatToolbarModule, MatSidenavModule, MatIconModule, MatButtonModule} from  '@angular/material';
+import { HeaderComponent } from './components/header/header.component';
+import {MatListModule, MatList} from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableSelectionExample
+    TableSelectionExample,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,12 @@ import { TableSelectionExample } from './example/example.component';
     MatPaginatorModule,
     MatSortModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
