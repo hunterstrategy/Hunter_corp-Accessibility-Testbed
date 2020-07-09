@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
   <span>Accessibility Testbed</span>
   <span class="example-spacer"></span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button class="example-icon" aria-label="home">
     <mat-icon>home</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button class="example-icon" aria-label="table">
     <mat-icon>table</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button class="example-icon" aria-label="map">
     <mat-icon>map</mat-icon>
   </button>
 </mat-toolbar>
