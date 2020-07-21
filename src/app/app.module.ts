@@ -12,12 +12,15 @@ import { TableSelectionExample } from './example/example.component';
 import { MatToolbarModule, MatSidenavModule, MatIconModule, MatButtonModule} from  '@angular/material';
 import { HeaderComponent } from './components/header/header.component';
 import {MatListModule, MatList} from '@angular/material/list';
+import { MatchComponent } from './match/match.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableSelectionExample,
-    HeaderComponent
+    HeaderComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import {MatListModule, MatList} from '@angular/material/list';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
