@@ -7,7 +7,7 @@ export interface Names {
 }
 
 const ELEMENT_DATA: Names[] = [
-  {name: 'Larry	'},
+  {name: 'Larry'},
   {name: 'Moe'},
   {name: 'Curly'},
 ];
