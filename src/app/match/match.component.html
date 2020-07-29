@@ -1,4 +1,4 @@
-<div id="app" cdkDropListGroup>
+<div id="app" cdkDropListGroup cdkTrapFocus>
     <div class="example-container-1">
         <div
           cdkDropList
@@ -7,7 +7,7 @@
           class="example-list"
           cdkDropListSortingDisabled
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
+          <div class="example-box" *ngFor="let item of items" cdkDrag tabindex="0" attr.aria-label= "{{item}} is uncategorized." >{{item}}</div>
         </div>
       </div>
 
@@ -21,7 +21,7 @@
         class="example-list"
         cdkDropListSortingDisabled
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of vertebrates" cdkDrag>{{item}}</div>
+        <div class="example-box" *ngFor="let item of vertebrates" cdkDrag tabindex="0" attr.aria-label= "{{item}} is a Vertebrate.">{{item}}</div>
       </div>
     </div>
   
@@ -34,7 +34,7 @@
         cdkDropListOrientation="horizontal"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of invertebrates" cdkDrag>{{item}}</div>
+        <div class="example-box" *ngFor="let item of invertebrates" cdkDrag tabindex="0" attr.aria-label= "{{item}} is an Invertebrate.">{{item}}</div>
       </div>
     </div>
   </div>
