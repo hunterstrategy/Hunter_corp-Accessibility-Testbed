@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {FocusableOption} from '@angular/cdk/a11y';
 
 /**
  * @title Drag&Drop disabled sorting
