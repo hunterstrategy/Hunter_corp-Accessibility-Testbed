@@ -61,15 +61,26 @@ export class MatchComponent implements OnInit{
     console.log(this.elements);
   }
 
-  fcn(key:string) {
-    console.log(key);
+  fcn(lastContainer, currentContainer, i) {
+    console.log(lastContainer);
+    console.log(currentContainer);
+    console.log(i);
   }
 
-  dropcustom(thing) {
-    transferArrayItem(thing.previousContainer.data,
-      thing.container.data,
-      thing.previousIndex,
-      thing.currentIndex)
+  dropcustom(element, i, currentContainer,) {
+    var index1 = this.arrayOptionList['options'].indexOf(element);
+    var index2 = this.arrayOptionList['vertebrates'].indexOf(element);
+    var index3 = this.arrayOptionList['invertebrates'].indexOf(element);
+    if (index1 != -1) {
+      this.arrayOptionList['options'].splice(index1, 1);
+    }
+    else if (index2 != -1) {
+      this.arrayOptionList['vertebrates'].splice(index1, 1);
+    }
+    else {
+      this.arrayOptionList['vertebrates'].splice(index1, 1);
+    }
+    currentContainer.push(element);
   }
 }
 

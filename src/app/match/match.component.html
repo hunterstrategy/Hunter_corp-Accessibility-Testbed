@@ -3,12 +3,12 @@
     <h5 style="text-align:center">{{key.key}}</h5>
     <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="key.value" class="example-list"
       cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of key.value; let i = index; let cat = 'uncategorized'" cdkDrag
+      <div class="example-box" *ngFor="let item of key.value; let i = index; let cat = 'key'" cdkDrag
         tabindex="0" attr.aria-label="{{item}} is uncategorized." (keydown.space)="menuTrigger.openMenu()">
         {{item}}
         <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" [overlapTrigger]="false">
-          <button *ngFor="let key of arrayOptionList | keyvalue" mat-menu-item
-            (click)="fcn(key.key)">{{key.key}}</button>
+          <button *ngFor="let item of arrayOptionList | keyvalue" mat-menu-item
+            (click)="dropcustom(key.value[i], i, item.value)">{{item.key}}</button>
         </mat-menu>
       </div>
     </div>
