@@ -14,13 +14,15 @@ import { HeaderComponent } from './components/header/header.component';
 import {MatListModule, MatList} from '@angular/material/list';
 import { MatchComponent } from './match/match.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HotspotComponent } from './hotspot/hotspot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableSelectionExample,
     HeaderComponent,
-    MatchComponent
+    MatchComponent,
+    HotspotComponent
   ],
   imports: [
     BrowserModule,
