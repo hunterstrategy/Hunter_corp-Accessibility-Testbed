@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import {MatListModule, MatList} from '@angular/material/list';
 import { MatchComponent } from './match/match.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatMenuModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
-    DragDropModule
+    DragDropModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
