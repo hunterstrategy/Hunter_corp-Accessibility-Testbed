@@ -6,8 +6,13 @@
           [cdkDropListData]="items"
           class="example-list"
           cdkDropListSortingDisabled
-          (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of items" cdkDrag tabindex="0" attr.aria-label= "{{item}} is uncategorized." >{{item}}</div>
+          (cdkDropListDropped)="drop($event)"
+          >
+          <div 
+            class="example-box" *ngFor="let item of items; let i = index; let cat = 'uncategorized'" cdkDrag tabindex="0" attr.aria-label= "{{item}} is uncategorized." 
+            (keydown.space)="menuTrigger1.openMenu()"> {{item}}</div>
+            <mat-menu #menu="matMenu" #menuTrigger1="matMenuTrigger" [matMenuTriggerData]="{thing: item, index: i}" [matMenuTriggerFor]="menu" [overlapTrigger]="false">
+            </mat-menu>
         </div>
       </div>
 
@@ -21,7 +26,11 @@
         class="example-list"
         cdkDropListSortingDisabled
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of vertebrates" cdkDrag tabindex="0" attr.aria-label= "{{item}} is a Vertebrate.">{{item}}</div>
+        <div class="example-box" *ngFor="let item of vertebrates" cdkDrag tabindex="0" attr.aria-label= "{{item}} is a Vertebrate." (keydown.space)="onKeydown($event)">{{item}}</div>
+        <mat-menu #menu="matMenu" #menuTrigger2="matMenuTrigger"  [matMenuTriggerFor]="menu" [overlapTrigger]="false">
+          <button mat-menu-item>(keydown.enter) = fcn(item, a) </button>
+          <button mat-menu-item>Add contact</button>
+        </mat-menu>
       </div>
     </div>
   
@@ -34,7 +43,11 @@
         cdkDropListOrientation="horizontal"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of invertebrates" cdkDrag tabindex="0" attr.aria-label= "{{item}} is an Invertebrate.">{{item}}</div>
+        <div class="example-box" *ngFor="let item of invertebrates" cdkDrag tabindex="0" attr.aria-label= "{{item}} is an Invertebrate." (keydown.space)="onKeydown($event)">{{item}}</div>
+        <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu" [overlapTrigger]="false">
+          <button mat-menu-item (keydown.enter) = "fcn()"> </button>
+          <button mat-menu-item>Add contact</button>
+        </mat-menu>
       </div>
     </div>
-  </div>
+</div>
