@@ -37,6 +37,10 @@ export class MatchComponent implements OnInit{
   
   invertebrates = [];
 
+  thing = [
+    {item: '', i : '', cat : ''}
+  ]
+
   version = VERSION;
 
   onOpenMenu(menu: any): void {
