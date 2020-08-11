@@ -15,6 +15,7 @@ import {MatListModule, MatList} from '@angular/material/list';
 import { MatchComponent } from './match/match.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HotspotComponent } from './hotspot/hotspot.component';
+import { MatMenuModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HotspotComponent } from './hotspot/hotspot.component';
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
-    DragDropModule
+    DragDropModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

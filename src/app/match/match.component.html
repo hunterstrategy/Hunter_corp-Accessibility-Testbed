@@ -1,40 +1,16 @@
 <div id="app" cdkDropListGroup cdkTrapFocus>
-    <div class="example-container-1">
-        <div
-          cdkDropList
-          cdkDropListOrientation="horizontal"
-          [cdkDropListData]="items"
-          class="example-list"
-          cdkDropListSortingDisabled
-          (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of items" cdkDrag tabindex="0" attr.aria-label= "{{item}} is uncategorized." >{{item}}</div>
-        </div>
-      </div>
-
-    <div class="example-container">
-      <h5 style="text-align:center">Vertebrate</h5>
-  
-      <div
-        cdkDropList
-        cdkDropListOrientation="horizontal"
-        [cdkDropListData]="vertebrates"
-        class="example-list"
-        cdkDropListSortingDisabled
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of vertebrates" cdkDrag tabindex="0" attr.aria-label= "{{item}} is a Vertebrate.">{{item}}</div>
-      </div>
-    </div>
-  
-    <div class="example-container">
-      <h5 style="text-align:center">Invertebrate</h5>
-  
-      <div
-        cdkDropList
-        [cdkDropListData]="invertebrates"
-        cdkDropListOrientation="horizontal"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of invertebrates" cdkDrag tabindex="0" attr.aria-label= "{{item}} is an Invertebrate.">{{item}}</div>
+  <div *ngFor='let key of arrayOptionList | keyvalue' class="example-container-1">
+    <h5 style="text-align:center">{{key.key}}</h5>
+    <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="key.value" class="example-list"
+      cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of key.value; let i = index; let cat = 'key'" cdkDrag
+        tabindex="0" attr.aria-label="{{item}} is uncategorized." (keydown.space)="menuTrigger.openMenu()">
+        {{item}}
+        <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" [overlapTrigger]="false">
+          <button *ngFor="let item of arrayOptionList | keyvalue" mat-menu-item
+            (click)="dropcustom(key.value[i], i, item.value)">{{item.key}}</button>
+        </mat-menu>
       </div>
     </div>
   </div>
+</div>
