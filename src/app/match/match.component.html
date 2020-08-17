@@ -6,9 +6,9 @@
       <div class="example-box" *ngFor="let item of key.value; let i = index; let cat = 'key'" cdkDrag
         tabindex="0" attr.aria-label="{{item}} is uncategorized." (keydown.space)="menuTrigger.openMenu()">
         {{item}}
-        <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" [overlapTrigger]="false">
+        <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu" [overlapTrigger]="false">
           <button *ngFor="let item of arrayOptionList | keyvalue" mat-menu-item
-            (click)="dropcustom(key.value[i], i, item.value)">{{item.key}}</button>
+            (click)="dropcustom(key.value[i], i, item.value)" attr.aria-label="Move {{key.value[i]}} to {{item.key}}.">{{item.key}}</button>
         </mat-menu>
       </div>
     </div>
