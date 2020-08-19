@@ -6,15 +6,27 @@
       width: 500px;
   }
   
-  .overlay {
+  .overlay1 {
       color: black;
       padding: 0px;
       position: absolute;
-      top: 797px;
-      left: 265px;
+      top: 977px;
+      left: 475px;
   }
+
+  .overlay2 {
+    color: black;
+    padding: 0px;
+    position: absolute;
+    top: 1063px;
+    left: 525px;
+}
 
   .mat-buttoncolor {
     background-color: black;
     color: #fff;
+}
+
+.container {
+    text-align: center;
 }
