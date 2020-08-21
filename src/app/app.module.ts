@@ -7,23 +7,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { FormsModule } from '@angular/forms';
-import { TableSelectionExample } from './example/example.component';
 import { MatToolbarModule, MatSidenavModule, MatIconModule, MatButtonModule} from  '@angular/material';
 import { HeaderComponent } from './components/header/header.component';
-import {MatListModule, MatList} from '@angular/material/list';
+import {MatListModule} from '@angular/material/list';
 import { MatchComponent } from './match/match.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HotspotComponent } from './hotspot/hotspot.component';
 import { MatMenuModule } from '@angular/material';
+import { TableComponent } from './table/table.component';
+
+import { routing } from './app.routing';
+import { RouterModule } from '@angular/router';
+import { TableSelectionExample } from './example/example.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableSelectionExample,
+    TableComponent,
     HeaderComponent,
     MatchComponent,
-    HotspotComponent
+    HotspotComponent,
+    TableSelectionExample
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,9 @@ import { MatMenuModule } from '@angular/material';
     MatSidenavModule,
     MatListModule,
     DragDropModule,
-    MatMenuModule
+    MatMenuModule,
+    RouterModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

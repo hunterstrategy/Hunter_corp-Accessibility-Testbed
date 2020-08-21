@@ -1,21 +1,6 @@
 <div id=app>
     <app-header></app-header>
-    <br>
-    <div id=text>
-        <p class="header"> Table </p>
-    </div>
-    <br>
-    <app-example></app-example>
-    <br>
-    <div id=text>
-        <p class="header"> Match </p>
-    </div>
-    <br>
-    <app-match></app-match>
-    <br>
-    <div id=text>
-        <p class="header"> Hotspot </p>
-    </div>
-    <br>
-    <app-hotspot></app-hotspot>
+    <div id="body" class="body-content" role="main">
+        <router-outlet></router-outlet>
+      </div>
 </div>
