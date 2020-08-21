@@ -10,23 +10,37 @@
       color: black;
       padding: 0px;
       position: absolute;
-      top: 977px;
-      left: 475px;
+      top: 984px;
+      left: 497px;
   }
 
   .overlay2 {
     color: black;
     padding: 0px;
     position: absolute;
-    top: 1063px;
-    left: 525px;
+    top: 1100px;
+    left: 587px;
+}
+
+.overlay3 {
+    color: black;
+    padding: 0px;
+    position: absolute;
+    top: 965px;
+    left: 440px;
 }
 
   .mat-buttoncolor {
     background-color: black;
-    color: #fff;
+    color: #eee;
 }
 
 .container {
     text-align: center;
 }
+
+.button24 {
+    background-color: darkblue;
+    width: 15px;
+    height: 15px;
+  }
