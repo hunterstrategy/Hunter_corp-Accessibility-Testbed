@@ -1,5 +1,11 @@
-<table role="presentation" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<h1>Presentation Table Match Example.</h1>
+<p>
+  This field input uses a presentation table to remove table navigation capability.
+  It is unnecesarry to understand the physical layout of table to be able to answer the questions.
+</p>
+<legend>The Three Stooges:</legend>
 
+<table role="presentation" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Stooge </th>
@@ -10,7 +16,7 @@
   <ng-container matColumnDef="radiobutton">
     <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Bald Headed </th>
     <td role="presentation" mat-cell *matCellDef="let row" [attr.role]="null">
-      <mat-radio-button id="{{row.name}}-radio-label" name="radio" aria-labelledby="{{row.name}}"></mat-radio-button>
+      <mat-radio-button id="{{row.name}}-radio-label" name="radio" aria-labelledby="{{row.name}}" ></mat-radio-button>
       <label id="{{row.name}}" class="noDisplay" aria-hidden="false" for="{{row.name}}-radio-label">Is {{row.name}} the Bald Headed stooge?</label>
     </td>
   </ng-container>
@@ -22,8 +28,8 @@
       <mat-checkbox
           (click)="$event.stopPropagation()"
           (change)="$event ? selection.toggle(row) : null"
-          [checked]="selection.isSelected(row)">
-          <span class="noDisplay" aria-hidden="false" >Is {{row.name}} not very smart</span>
+          [checked]="selection.isSelected(row)"
+          aria-label="Is {{row.name}} not very smart">
       </mat-checkbox>
     </td>
   </ng-container>
