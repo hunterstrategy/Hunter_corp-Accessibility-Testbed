@@ -91,6 +91,8 @@ THE SOFTWARE.
 
 @angular/material/icon
 
+@angular/material/menu
+
 @angular/material/radio
 
 @angular/material/table
@@ -100,6 +102,9 @@ THE SOFTWARE.
 @angular/material/tooltip
 
 @angular/platform-browser
+MIT
+
+@angular/router
 MIT
 
 bootstrap
