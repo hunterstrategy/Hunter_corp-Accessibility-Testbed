@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-
+import { HostListener, HostBinding } from '@angular/core';
 import { Element, Attribute} from '../Element';
 
 /**
@@ -67,7 +67,7 @@ export class MatchComponent implements OnInit{
     console.log(i);
   }
 
-  dropcustom(element, i, currentContainer,) {
+  dropcustom(event, element, i, currentContainer) {
     var index1 = this.arrayOptionList['options'].indexOf(element);
     var index2 = this.arrayOptionList['vertebrates'].indexOf(element);
     var index3 = this.arrayOptionList['invertebrates'].indexOf(element);
@@ -78,9 +78,36 @@ export class MatchComponent implements OnInit{
       this.arrayOptionList['vertebrates'].splice(index1, 1);
     }
     else {
-      this.arrayOptionList['vertebrates'].splice(index1, 1);
+      this.arrayOptionList['invertebrates'].splice(index1, 1);
     }
     currentContainer.push(element);
+
+    let nextElem = event.srcElement.firstElementChild;
+    if(nextElem == null){
+        console.log("null");  // check if its null
+        return;
+      }
+    else{
+        nextElem.focus();   // focus if not null
+      }
   }
+
+  @HostListener('window:focus', ['$event'])
+  onFocus(event: FocusEvent): void {  
+      console.log("focus");
+      console.log(event);
+      // Do something      
+
+  }
+  
+  @HostBinding('attr.tabindex') tabindex = '0';
+  @HostListener('window:blur', ['$event'])
+  onBlur(event: FocusEvent): void {
+    console.log("blur");
+    
+     // Do something
+
+  }
+  
 }
 
