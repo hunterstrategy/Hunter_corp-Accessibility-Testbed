@@ -37,7 +37,7 @@ export class MatchComponent implements OnInit{
         'Spiders',
         'Lizards']
       },
-       { 
+      { 
         name: 'vertebrate',
         values: []
       },
@@ -63,7 +63,6 @@ export class MatchComponent implements OnInit{
   }
 
   dropcustom(element, i, currentContainer) {
-    console.log(element, i, currentContainer)
     var index1 = this.arrayOptionList[0].values.indexOf(element);
     var index2 = this.arrayOptionList[1].values.indexOf(element);
     var index3 = this.arrayOptionList[2].values.indexOf(element);
