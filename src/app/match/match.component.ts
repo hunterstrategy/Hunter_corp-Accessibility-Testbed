@@ -82,6 +82,7 @@ export class MatchComponent implements OnInit{
     }
     currentContainer.push(element);
 
+<<<<<<< Updated upstream
     let nextElem = event.srcElement.firstElementChild;
     if(nextElem == null){
         console.log("null");  // check if its null
@@ -107,7 +108,51 @@ export class MatchComponent implements OnInit{
     
      // Do something
 
+=======
+    if(parentList.children[1]){
+      //find next elem of below
+      let nextElem = document.getElementById(parentList.children[1].id);
+      nextElem.focus();
+      return;
+    }
+    else {
+      let optionsList = document.getElementById("Options")
+      let vertebrateList = document.getElementById("vertebrate");
+      let invertebrateList = document.getElementById("invertebrate");
+      if(optionsList.children[0]){
+        //find next elem of below
+        let nextElem = document.getElementById(optionsList.children[0].id);
+        nextElem.focus();
+        return;
+      }
+      else if(vertebrateList.children[0]){
+        //find next elem of below
+        let nextElem = document.getElementById(vertebrateList.children[0].id);
+        nextElem.focus();
+        return;
+      }
+      else {
+        if(invertebrateList.children[0]){
+          //find next elem of below
+          let nextElem = document.getElementById(invertebrateList.children[0].id);
+          nextElem.focus();
+          return;
+        }
+      }
+    }
+>>>>>>> Stashed changes
   }
   
+
+  onBlurMethod(i) {
+    let parentList = document.getElementById(i);
+
+    if(parentList.children[0].id){
+      //find next elem of below
+      let nextElem = document.getElementById(parentList.children[1].id);
+      nextElem.focus();
+      return;
+    }
+  }
 }
 
