@@ -8,23 +8,23 @@
 <table role="presentation" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Stooge </th>
-    <td role="presentation" mat-cell *matCellDef="let element" scope="row" [attr.role]="null"> {{element.name}} </td>
+    <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" aria-hidden="true"> Stooge </th>
+    <td role="presentation" mat-cell *matCellDef="let element" scope="row" aria-hidden="true"> {{element.name}} </td>
   </ng-container>
 
   <!-- Radio Button Column -->
   <ng-container matColumnDef="radiobutton">
-    <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Bald Headed </th>
-    <td role="presentation" mat-cell *matCellDef="let row" [attr.role]="null">
-      <mat-radio-button id="{{row.name}}-radio-label" name="radio" aria-labelledby="{{row.name}}" ></mat-radio-button>
+    <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" aria-hidden="true"> Bald Headed </th>
+    <td role="presentation" mat-cell *matCellDef="let row">
+      <mat-radio-button id="{{row.name}}-radio-label" name="radio" aria-label="Is {{row.name}} the Bald Headed stooge?" ></mat-radio-button>
       <label id="{{row.name}}" class="noDisplay" aria-hidden="false" for="{{row.name}}-radio-label">Is {{row.name}} the Bald Headed stooge?</label>
     </td>
   </ng-container>
 
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
-    <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Not Very Smart </th>
-    <td role="presentation" mat-cell *matCellDef="let row" [attr.role]="null">
+    <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" aria-hidden="true"> Not Very Smart </th>
+    <td role="presentation" mat-cell *matCellDef="let row">
       <mat-checkbox
           (click)="$event.stopPropagation()"
           (change)="$event ? selection.toggle(row) : null"
@@ -34,7 +34,6 @@
     </td>
   </ng-container>
 
-  <tr role="presentation" mat-header-row *matHeaderRowDef="displayedColumns" [attr.role]="null"></tr>
-  <tr role="presentation" mat-row *matRowDef="let row; columns: displayedColumns;" [attr.role]="null">
-  </tr>
+  <tr role="presentation" mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+  <tr role="presentation" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
