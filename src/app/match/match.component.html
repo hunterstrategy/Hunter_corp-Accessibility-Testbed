@@ -1,3 +1,4 @@
+
 <div>
   <h1>Drag and Drop Match Example.</h1>
   <p>
@@ -12,7 +13,7 @@
       <button class="example-box" *ngFor="let item of key.values; let i = index; let cat = 'key'" cdkDrag id="{{item}}"
           attr.aria-label="{{item}} in the {{key.name}} list option  {{(i + 1)}} of {{key.values.length}}" (click)="menuTrigger.openMenu()">
           {{item}}
-          <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu" [overlapTrigger]="false">
+          <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger" (blur)="onBlurMethod(key.name)" [matMenuTriggerFor]="menu" [overlapTrigger]="false">
             <ng-container *ngFor="let option of arrayOptionList; let optionIndex = index;">
               <button *ngIf="catIndex != optionIndex" mat-menu-item attr.aria-label="place {{item}} in the {{option.name}} list"
               (click)="dropcustom(key.values[i], key.name, option.values)" >{{option.name}}</button>
