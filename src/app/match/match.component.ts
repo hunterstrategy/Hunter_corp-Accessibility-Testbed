@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, ElementRef} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { HostListener, HostBinding } from '@angular/core';
 import { Element, Attribute} from '../Element';
@@ -29,16 +29,23 @@ export class MatchComponent implements OnInit{
   * mutually exclusive strings shared by the array
   */
   arrayOptionList = 
-    {
-      'options': ['Worms',
-      'Cats',
-      'Spiders',
-      'Lizards'],
-      'vertebrates' : [
-      ],
-      'invertebrates' :[
-      ]
-    };
+    [
+       { 
+        name: 'Options',
+        values: ['Worms',
+        'Cats',
+        'Spiders',
+        'Lizards']
+      },
+       { 
+        name: 'vertebrate',
+        values: []
+      },
+      {
+        name: 'invertebrate',
+        values: []
+      }
+    ];
 
   onOpenMenu(menu: any): void {
     menu.openMenu
@@ -55,58 +62,28 @@ export class MatchComponent implements OnInit{
     }
   }
 
-  onKeydown(event) {
-    console.log(event);
-    console.log("pressed");
-    console.log(this.elements);
-  }
-
-  fcn(lastContainer, currentContainer, i) {
-    console.log(lastContainer);
-    console.log(currentContainer);
-    console.log(i);
-  }
-
-  dropcustom(event, element, i, currentContainer) {
-    var index1 = this.arrayOptionList['options'].indexOf(element);
-    var index2 = this.arrayOptionList['vertebrates'].indexOf(element);
-    var index3 = this.arrayOptionList['invertebrates'].indexOf(element);
+  dropcustom(element, i, currentContainer) {
+    console.log(element, i, currentContainer)
+    var index1 = this.arrayOptionList[0].values.indexOf(element);
+    var index2 = this.arrayOptionList[1].values.indexOf(element);
+    var index3 = this.arrayOptionList[2].values.indexOf(element);
     if (index1 != -1) {
-      this.arrayOptionList['options'].splice(index1, 1);
+      this.arrayOptionList[0].values.splice(index1, 1);
     }
     else if (index2 != -1) {
-      this.arrayOptionList['vertebrates'].splice(index1, 1);
+      this.arrayOptionList[1].values.splice(index2, 1);
     }
-    else {
-      this.arrayOptionList['invertebrates'].splice(index1, 1);
+    else if (index3 != -1){
+      this.arrayOptionList[2].values.splice(index3, 1);
     }
     currentContainer.push(element);
+    let parentList = document.getElementById(i);
 
-    let nextElem = event.srcElement.firstElementChild;
-    if(nextElem == null){
-        console.log("null");  // check if its null
-        return;
-      }
-    else{
-        nextElem.focus();   // focus if not null
-      }
-  }
-
-  @HostListener('window:focus', ['$event'])
-  onFocus(event: FocusEvent): void {  
-      console.log("focus");
-      console.log(event);
-      // Do something      
-
-  }
-  
-  @HostBinding('attr.tabindex') tabindex = '0';
-  @HostListener('window:blur', ['$event'])
-  onBlur(event: FocusEvent): void {
-    console.log("blur");
-    
-     // Do something
-
+    if(parentList.children[0].id){
+      let nextElem = document.getElementById(parentList.children[0].id)
+      nextElem.focus();
+      return;
+    }
   }
   
 }

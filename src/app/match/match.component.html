@@ -1,20 +1,24 @@
-<h1>Drag and Drop Match Example.</h1>
-<p>
-  This field input uses a drag and drop input with an additional menu navigation option to answer.
-</p>
-<legend>Match the Animals to the approriate category:</legend>
-<div id="app" cdkDropListGroup cdkTrapFocus>
-  <div *ngFor='let key of arrayOptionList | keyvalue' class="example-container-1">
-    <h5 style="text-align:center">{{key.key}}</h5>
-    <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="key.value" class="example-list"
-      cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of key.value; let i = index; let cat = 'key'" cdkDrag
-        tabindex="0" attr.aria-label="{{item}} is in {{key.key}}." (keydown.space)="menuTrigger.openMenu()">
-        {{item}}
-        <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu" [overlapTrigger]="false">
-          <button *ngFor="let item of arrayOptionList | keyvalue" mat-menu-item
-            (click)="dropcustom($event, key.value[i], i, item.value)" (blur)="onBlur($event.target)">{{item.key}}</button>
-        </mat-menu>
+<div>
+  <h1>Drag and Drop Match Example.</h1>
+  <p>
+    This field input uses a drag and drop input with an additional menu navigation option to answer.
+  </p>
+  <legend>Match the Animals to the approriate category:</legend>
+  <div id="app" cdkDropListGroup cdkTrapFocus>
+    <div *ngFor='let key of arrayOptionList; let catIndex = index;' class="example-container-1">
+      <h5 style="text-align:center">{{key.name}}</h5>
+      <div cdkDropList cdkDropListOrientation="horizontal" id="{{key.name}}" [cdkDropListData]="key.values" class="example-list"
+        cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)" attr.aria-label="{{key.name}}" >
+      <button class="example-box" *ngFor="let item of key.values; let i = index; let cat = 'key'" cdkDrag id="{{item}}"
+          attr.aria-label="{{item}} in the {{key.name}} list option  {{(i + 1)}} of {{key.values.length}}" (click)="menuTrigger.openMenu()">
+          {{item}}
+          <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu" [overlapTrigger]="false">
+            <ng-container *ngFor="let option of arrayOptionList; let optionIndex = index;">
+              <button *ngIf="catIndex != optionIndex" mat-menu-item attr.aria-label="place {{item}} in the {{option.name}} list"
+              (click)="dropcustom(key.values[i], key.name, option.values)" >{{option.name}}</button>
+            </ng-container> 
+          </mat-menu>
+        </button>
       </div>
     </div>
   </div>
