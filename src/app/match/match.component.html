@@ -2,25 +2,32 @@
 <div>
   <h1>Drag and Drop Match Example.</h1>
   <p>
-    This field input uses a drag and drop input with an additional menu navigation option to answer.
+    This field input uses a drag and drop input with an additional menu navigation option to answer the question.
   </p>
-  <legend>Match the Animals to the approriate category:</legend>
+  <legend>Match the Animals to the correct category:</legend>
   <div id="app" cdkDropListGroup cdkTrapFocus>
     <div *ngFor='let key of arrayOptionList; let catIndex = index;' class="example-container-1">
-      <h5 style="text-align:center">{{key.name}}</h5>
+      <label id="{{key.name}}-Label" style="text-align:center" for="{{key.name}}" >{{key.name}} 
+        <span style="height: 0px; width: 0px; font-size: 0px;"> {{catIndex + 1}} of {{arrayOptionList.length}} with {{key.values.length}} items</span>
+      </label>
       <div cdkDropList cdkDropListOrientation="horizontal" id="{{key.name}}" [cdkDropListData]="key.values" class="example-list"
-        cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)" attr.aria-label="{{key.name}}" >
+        cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)">
       <button class="example-box" *ngFor="let item of key.values; let i = index; let cat = 'key'" cdkDrag id="{{item}}"
-          attr.aria-label="{{item}} in the {{key.name}} list option  {{(i + 1)}} of {{key.values.length}}" (click)="menuTrigger.openMenu()">
+          attr.aria-label="{{item}} in the {{key.name}} list option  {{(i + 1)}} of {{key.values.length}}" 
+          [matMenuTriggerFor]="menu" 
+          [matMenuTriggerRestoreFocus]="false">
           {{item}}
-          <mat-menu #menu="matMenu" #menuTrigger="matMenuTrigger" (blur)="onBlurMethod(key.name)" [matMenuTriggerFor]="menu" [overlapTrigger]="false">
+          <mat-menu role="menu" #menu="matMenu" >
             <ng-container *ngFor="let option of arrayOptionList; let optionIndex = index;">
               <button *ngIf="catIndex != optionIndex" mat-menu-item attr.aria-label="place {{item}} in the {{option.name}} list"
-              (click)="dropcustom(key.values[i], key.name, option.values)" >{{option.name}}</button>
+              (click)="dropcustom(key.values[i], key.name, option)">{{option.name}}</button>
             </ng-container> 
           </mat-menu>
         </button>
       </div>
+    </div>
+    <div role="region" id="selectionAlerts" aria-live="polite" >
+      <p id="selectionMoved" style="height: 0px; width: 0px; font-size: 0px;">{{this.moveMessage}}</p>
     </div>
   </div>
 </div>

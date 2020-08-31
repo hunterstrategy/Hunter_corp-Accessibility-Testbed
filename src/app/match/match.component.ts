@@ -2,6 +2,7 @@ import {Component, OnInit, Input, ViewChild, ElementRef} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { HostListener, HostBinding } from '@angular/core';
 import { Element, Attribute} from '../Element';
+import { element } from 'protractor';
 
 /**
  * @title Drag&Drop disabled sorting
@@ -18,6 +19,8 @@ export class MatchComponent implements OnInit{
   @Input() attributes : Attribute[];
 
   constructor() {}
+
+  moveMessage:string = '';
 
   ngOnInit() {
     this.elements = [];
@@ -62,7 +65,7 @@ export class MatchComponent implements OnInit{
     }
   }
 
-  dropcustom(element, i, currentContainer) {
+  dropcustom(element, i,currentContainer) {
     var index1 = this.arrayOptionList[0].values.indexOf(element);
     var index2 = this.arrayOptionList[1].values.indexOf(element);
     var index3 = this.arrayOptionList[2].values.indexOf(element);
@@ -75,80 +78,35 @@ export class MatchComponent implements OnInit{
     else if (index3 != -1){
       this.arrayOptionList[2].values.splice(index3, 1);
     }
-    currentContainer.push(element);
-    let parentList = document.getElementById(i);
-
-// <<<<<<< HEAD
-// <<<<<<< Updated upstream
-//     let nextElem = event.srcElement.firstElementChild;
-//     if(nextElem == null){
-//         console.log("null");  // check if its null
-//         return;
-//       }
-//     else{
-//         nextElem.focus();   // focus if not null
-//       }
-//   }
-
-//   @HostListener('window:focus', ['$event'])
-//   onFocus(event: FocusEvent): void {  
-//       console.log("focus");
-//       console.log(event);
-//       // Do something      
-
-//   }
-  
-//   @HostBinding('attr.tabindex') tabindex = '0';
-//   @HostListener('window:blur', ['$event'])
-//   onBlur(event: FocusEvent): void {
-//     console.log("blur");
-    
-//      // Do something
-
-// =======
-    if(parentList.children[1]){
-      //find next elem of below
-      let nextElem = document.getElementById(parentList.children[1].id);
-      nextElem.focus();
-      return;
-    }
-    else {
-      let optionsList = document.getElementById("Options")
-      let vertebrateList = document.getElementById("vertebrate");
-      let invertebrateList = document.getElementById("invertebrate");
-      if(optionsList.children[0]){
-        //find next elem of below
-        let nextElem = document.getElementById(optionsList.children[0].id);
-        nextElem.focus();
-        return;
-      }
-      else if(vertebrateList.children[0]){
-        //find next elem of below
-        let nextElem = document.getElementById(vertebrateList.children[0].id);
-        nextElem.focus();
-        return;
-      }
-      else {
-        if(invertebrateList.children[0]){
-          //find next elem of below
-          let nextElem = document.getElementById(invertebrateList.children[0].id);
-          nextElem.focus();
-          return;
-        }
-      }
-    }
+    currentContainer.values.push(element);
+    console.log(currentContainer.name )
+    this.moveMessage = "Moved " + element + " to " + currentContainer.name; 
+    this.handleFocus(element, i);
   }
-  
 
-  onBlurMethod(i) {
+  handleFocus(elemId, i){
     let parentList = document.getElementById(i);
-
-    if(parentList.children[0].id){
-      //find next elem of below
-      let nextElem = document.getElementById(parentList.children[1].id);
-      nextElem.focus();
-      return;
-    }
+    let passedFocus = false;
+    //focus parent list
+    //parentList.focus();
+    //Focus Next input option if it exists
+    // if(parentList.children[0]){
+    //   //find next elem of below
+    //   let nextElem = document.getElementById(parentList.children[0].id);
+    //   nextElem.focus();
+    //   return;
+    // }
+    //Focus first item from the avialable list that is not the current button option
+    this.arrayOptionList.forEach(optionList => {
+      let tempListElement = document.getElementById(optionList.name);
+      Array.from(tempListElement.children).forEach(element => {
+        if(element.id !== elemId && !passedFocus){
+          let nextElem = document.getElementById(element.id);
+          passedFocus = true;
+          nextElem.focus();
+        }
+      });
+    })
   }
 }
 
