@@ -1,19 +1,20 @@
-<h1>Hotspot Example.</h1>
-<p>
-    This field input uses tag navigable selections overlaid on an image.
-</p>
-<legend>Select a the city of Colorado from the Map of the United States:</legend>
-<img src="/assets/usamap.jpg"
-    alt="Select the capital of Colorado on the map of the United States below. Option summary: 3 button options. Button 1 located on Salt Lake City, Button 2 located on Denver, and Button 3 located on Houston.">
-<div class="overlay3">
-    <button mat-mini-fab color="buttoncolor" class="button24" title="Button 1 on Salt Lake City."
-        onclick="console.log('Button pressed')"> </button>
-</div>
-<div class="overlay1">
-    <button mat-mini-fab color="buttoncolor" class="button24" title="Button 2 on Denver."
-        onclick="console.log('Button pressed')"> </button>
-</div>
-<div class="overlay2">
-    <button mat-mini-fab color="buttoncolor" class="button24" title="Button 3 on Houston."
-        onclick="console.log('Button pressed')"> </button>
+<div >
+    <h1>Hotspot Example.</h1>
+    <p>
+        This field input uses tag navigable selections overlaid on an image.
+    </p>
+    <legend>Select a the city of Colorado from the Map of the United States:</legend>
+    <div class="hotspot-question">
+        <img class="hotspot-image" src="/assets/usamap.jpg"
+            alt="Select the capital of Colorado on the map of the United States below. Option summary: 3 button options.">
+        <div class="hotspot-option-1">
+            <mat-checkbox aria-label="Option 1 of 3 on Salt Lake City."> </mat-checkbox>
+        </div>
+        <div class="hotspot-option-2">
+            <mat-checkbox aria-label="Option 2 of 3 on Denver."> </mat-checkbox>
+        </div>
+        <div class="hotspot-option-3">
+            <mat-checkbox aria-label="Option 3 of 3 on Houston."> </mat-checkbox>
+        </div>
+    </div>
 </div>
