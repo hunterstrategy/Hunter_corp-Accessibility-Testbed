@@ -1,6 +1,6 @@
   
   .hotspot-question {
-    position: fixed;
+    position: relative;
     .hotspot-image {
         width: 500px;
     }
@@ -36,6 +36,7 @@
     ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
         background-color: #005691;
       }
+
 }
   
 
