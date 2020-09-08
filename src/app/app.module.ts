@@ -19,6 +19,7 @@ import { TableComponent } from './table/table.component';
 import { routing } from './app.routing';
 import { RouterModule } from '@angular/router';
 import { TableSelectionExample } from './example/example.component';
+import { HotspotSingleComponent } from './hotspot-single/hotspot-single.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TableSelectionExample } from './example/example.component';
     HeaderComponent,
     MatchComponent,
     HotspotComponent,
-    TableSelectionExample
+    TableSelectionExample,
+    HotspotSingleComponent
   ],
   imports: [
     BrowserModule,
