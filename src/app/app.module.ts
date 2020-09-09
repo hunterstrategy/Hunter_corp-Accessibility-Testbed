@@ -20,6 +20,7 @@ import { routing } from './app.routing';
 import { RouterModule } from '@angular/router';
 import { TableSelectionExample } from './example/example.component';
 import { HotspotSingleComponent } from './hotspot-single/hotspot-single.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { HotspotSingleComponent } from './hotspot-single/hotspot-single.componen
     RouterModule,
     routing
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
