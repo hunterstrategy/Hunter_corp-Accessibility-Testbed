@@ -5,6 +5,7 @@ import { MatchComponent } from './match/match.component';
 import { TableComponent } from './table/table.component';
 import { TableSelectionExample } from './example/example.component';
 import { HotspotSingleComponent } from './hotspot-single/hotspot-single.component';
+import { HotspotMaxComponent } from './hotspot-max/hotspot-max.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/table', pathMatch: 'full' },
@@ -16,6 +17,9 @@ const appRoutes: Routes = [
     },
     {
         path: 'hotspot-single', component: HotspotSingleComponent
+    },
+    {
+        path: 'hotspot-max', component: HotspotMaxComponent
     },
     {
         path: 'table', component: TableComponent

@@ -21,6 +21,8 @@ import { RouterModule } from '@angular/router';
 import { TableSelectionExample } from './example/example.component';
 import { HotspotSingleComponent } from './hotspot-single/hotspot-single.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HotspotMaxComponent } from './hotspot-max/hotspot-max.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,11 +32,13 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     MatchComponent,
     HotspotComponent,
     TableSelectionExample,
-    HotspotSingleComponent
+    HotspotSingleComponent,
+    HotspotMaxComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,

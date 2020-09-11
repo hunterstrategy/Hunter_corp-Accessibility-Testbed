@@ -1,21 +1,24 @@
 <div >
-    <h1>Hotspot Example 1.</h1>
+    <h1>Multiple Cardinality Hotspot Example.</h1>
     <p>
-        This input uses checkboxes overlaid on an image to allow uses to click the appropriate answer based on the visual relationship.
-        Multiple selections are allowed.
+        This input uses checkboxes overlaid on an image to allow users to click the appropriate answer based on the visual relationship.
+        By using checkboxes on the map multiple cardinality is enabled and no limit is placed on the number of selected answers.
     </p>
-    <legend>Select a the city of Colorado from the Map of the United States:</legend>
+    <legend>Select the states located on the eastern seaboard from the below map of the United States:</legend>
     <div class="hotspot-question">
         <img class="hotspot-image" src="/assets/usamap.jpg"
-            alt="Select the capital of Colorado on the map of the United States below. Option summary: 3 button options.">
+            alt="A map of the contiguous United States">
         <div class="hotspot-option-1">
-            <mat-checkbox id="checkbox-1" aria-label="Option 1 of 3 on Salt Lake City."> </mat-checkbox>
+            <mat-checkbox id="checkbox-1" aria-label="Option 1 of 4 on Maine."> </mat-checkbox>
         </div>
         <div class="hotspot-option-2">
-            <mat-checkbox id="checkbox-2" aria-label="Option 2 of 3 on Denver."> </mat-checkbox>
+            <mat-checkbox id="checkbox-2" aria-label="Option 2 of 4 on Virginia."> </mat-checkbox>
         </div>
         <div class="hotspot-option-3">
-            <mat-checkbox id="checkbox-3" aria-label="Option 3 of 3 on Houston."> </mat-checkbox>
+            <mat-checkbox id="checkbox-3" aria-label="Option 3 of 4 on California."> </mat-checkbox>
+        </div>
+        <div class="hotspot-option-4">
+            <mat-checkbox id="checkbox-4" aria-label="Option 4 of 4 on Texas."> </mat-checkbox>
         </div>
     </div>
 </div>

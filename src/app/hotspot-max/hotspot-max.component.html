@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Multiple Cardinality Hotspot with Max Choice Example.</h1>
+    <p>
+        This input uses checkboxes overlaid on an image to allow users to click the appropriate answer based on the visual relationship
+        by using checkboxes on the map multiple cardinality is enabled.
+        Watching the length of the answer makes it possible to limit previous choices and notify a user that the max number of choices have been reached
+    </p>
+    <legend>Select two states located on the eastern seaboard from the below map of the United States:</legend>
+    <div class="hotspot-question">
+        <img class="hotspot-image" src="/assets/usamap.jpg"
+            alt="A map of the contiguous United States">
+            <!-- While trivial order the options so the DOM naturally traverses through answers left to right top to bottom to match natural reading-->
+        <div formArrayName="options" *ngFor="let option of optionsFormArray.controls; let i = index" class="{{optionsData[i].class}}">
+            <mat-checkbox  id="{{optionsData[i].name}}" [formControlName]="i" (change)="click()" 
+            aria-label="{{optionsData[i].label}}" [disabled]="(this.selectedOptionlength >= this.maxOptions && !option.value)"></mat-checkbox>
+        </div> 
+    </div>
+    <div role="region" id="selectionAlerts" aria-live="polite">
+        <p *ngIf="this.selectedOptionlength > 0" style="height: 0px; width: 0px; font-size: 0px;">{{this.selectedOptionlength}} selections of a maximum of {{this.maxOptions}} have been made.</p>
+        </div>
+</form>
