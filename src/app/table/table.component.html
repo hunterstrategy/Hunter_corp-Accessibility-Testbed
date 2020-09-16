@@ -1,39 +1,41 @@
-<h1>Presentation Table Match Example.</h1>
-<p>
-  This field input uses a presentation table to remove table navigation capability.
-  It is unnecesarry to understand the physical layout of table to be able to answer the questions.
-</p>
-<legend>The Three Stooges:</legend>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h1>Presentation Table Match Example.</h1>
+  <p>
+    This field input uses a presentation table to remove table navigation capability.
+    It is unnecesarry to understand the physical layout of table to be able to answer the questions.
+  </p>
+  <legend>The Three Stooges:</legend>
 
-<table role="presentation" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" aria-hidden="true"> Stooge </th>
-    <td role="presentation" mat-cell *matCellDef="let element" scope="row" aria-hidden="true"> {{element.name}} </td>
-  </ng-container>
-
-  <!-- Radio Button Column -->
-  <ng-container matColumnDef="radiobutton">
-    <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" aria-hidden="true"> Bald Headed </th>
-    <td role="presentation" mat-cell *matCellDef="let row">
-      <mat-radio-button id="{{row.name}}-radio-label" name="radio" aria-label="Is {{row.name}} the Bald Headed stooge?"></mat-radio-button>
-      <label id="{{row.name}}" class="noDisplay" aria-hidden="false" for="{{row.name}}-radio-label">Is {{row.name}} the Bald Headed stooge?</label>
-    </td>
-  </ng-container>
-
-  <!-- Checkbox Column -->
-  <ng-container matColumnDef="select">
-    <th role="presentation" mat-header-cell *matHeaderCellDef scope="col" aria-hidden="true"> Not Very Smart </th>
-    <td role="presentation" mat-cell *matCellDef="let row">
-      <mat-checkbox
-          (click)="$event.stopPropagation()"
-          (change)="$event ? selection.toggle(row) : null"
-          [checked]="selection.isSelected(row)"
-          aria-label="Is {{row.name}} not very smart">
-      </mat-checkbox>
-    </td>
-  </ng-container>
-
-  <tr role="presentation" mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
-  <tr role="presentation" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+  <table role="presentation" class="mat-elevation-z8">
+    <thead role="presentation">
+      <tr role="presentation">
+        <td role="presentation" aria-hidden="true">Stooge</td>
+        <td role="presentation"  aria-hidden="true" *ngFor="let stooge of questionData">{{stooge.name}}</td>
+      </tr>
+    </thead>
+    <tbody role="presentation">
+      <tr role="presentation">
+        <td role="presentation" aria-hidden="true">Is Bald Headed</td>
+            <td role="presentation" *ngFor="let stooge of questionData" scope="row">
+              <div>
+                  <mat-radio-button value="{{stooge.name}}" 
+                    id="{{stooge.name}}-radio-label" name="radio"
+                    aria-label="Is {{stooge.name}} the one Bald Headed stooge?"
+                    (click)="radioChange(stooge)"
+                   [checked]="this.form.controls['isBald'].value === stooge.name">
+                  </mat-radio-button>
+              </div>
+          </td>      
+      </tr>
+      <tr role="presentation">
+        <td role="presentation" aria-hidden="true">Is not very smart</td>
+        <td role="presentation" *ngFor="let stooge of questionData" [attr.role]="null" scope="row">
+          <div>
+            <mat-checkbox aria-label="Is {{stooge.name}} not very smart">
+            </mat-checkbox>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

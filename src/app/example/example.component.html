@@ -1,41 +1,41 @@
 <h1>Data Table Match Example.</h1>
-<p>
-  This field input uses a data table to allow table navigation capability.
-</p>
-<legend>The Three Stooges:</legend>
+  <p>
+    This field input uses a data table to allow table navigation capability.
+  </p>
+  <legend>The Three Stooges:</legend>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" role="table">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" role="table">
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th  mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Stooge </th>
-    <td  mat-cell *matCellDef="let element" scope="row" [attr.role]="null"> {{element.name}} </td>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th  mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Stooge </th>
+      <td  mat-cell *matCellDef="let element" scope="row" [attr.role]="null"> {{element.name}} </td>
+    </ng-container>
 
-  <!-- Radio Button Column -->
-  <ng-container matColumnDef="radiobutton">
-    <th mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Bald Headed </th>
-    <td mat-cell *matCellDef="let row" [attr.role]="null" scope="row">
-      <div><mat-radio-button id="{{row.name}}-radio-label" name="radio" aria-label="Is {{row.name}} the Bald Headed stooge?" ></mat-radio-button></div>
-    </td>
-  </ng-container>
+    <!-- Radio Button Column -->
+    <ng-container matColumnDef="radiobutton">
+      <th mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Bald Headed </th>
+      <td mat-cell *matCellDef="let row" [attr.role]="null" scope="row">
+        <div><mat-radio-button id="{{row.name}}-radio-label" name="radio" aria-label="Is {{row.name}} the Bald Headed stooge?" ></mat-radio-button></div>
+      </td>
+    </ng-container>
 
-  <!-- Checkbox Column -->
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Not Very Smart </th>
-    <td mat-cell *matCellDef="let row" [attr.role]="null" scope="row">
-      <div>
-        <mat-checkbox
-        (click)="$event.stopPropagation()"
-        (change)="$event ? selection.toggle(row) : null"
-        [checked]="selection.isSelected(row)"
-        aria-label="Is {{row.name}} not very smart">
-    </mat-checkbox>
-  </div>    
-    </td>
-  </ng-container>
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef scope="col" [attr.role]="null"> Not Very Smart </th>
+      <td mat-cell *matCellDef="let row" [attr.role]="null" scope="row">
+        <div>
+          <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+            aria-label="Is {{row.name}} not very smart">
+          </mat-checkbox>
+        </div>    
+      </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns" [attr.role]="null"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;" [attr.role]="null">
-  </tr>
-</table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" [attr.role]="null"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [attr.role]="null">
+    </tr>
+  </table>

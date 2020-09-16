@@ -10,8 +10,9 @@ export class HotspotMaxComponent implements OnInit {
 
   
   form: FormGroup;
-  selectedOptionlength : number;
+  selectedOptionlength : number = 0;
   maxOptions: number = 2;
+  maxLimitReached: boolean = false;
 
   optionsData = [
     { id: 1, name: 'Maine', class: "hotspot-option-1", label: "Option 1 of 4 on Maine." },
@@ -39,18 +40,21 @@ export class HotspotMaxComponent implements OnInit {
     this.optionsData.forEach(() => this.optionsFormArray.push(new FormControl(false)));
   }
 
-  click() {
-  this.selectedOptionlength = this.form.value.options
+  click(data) {
+    this.maxLimitReached = false;
+    if(this.selectedOptionlength === this.maxOptions){
+      data.setValue(false);
+      this.maxLimitReached = true;
+    } 
+    this.selectedOptionlength = this.form.value.options
       .map((checked, i) => checked ? this.optionsData[i].id : null)
-      .filter(v => v !== null).length;
+      .filter(v => v !== null).length;    
   }
 
   submit() {
     const selectedOptionIds = this.form.value.options
       .map((checked, i) => checked ? this.optionsData[i].id : null)
       .filter(v => v !== null);
-      console.log(this.optionsFormArray.controls)
-    console.log(selectedOptionIds);
   }
 
 }

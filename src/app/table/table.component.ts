@@ -1,16 +1,14 @@
-import {SelectionModel} from '@angular/cdk/collections';
-import {Component} from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
+import { Component } from '@angular/core';
+import { FormGroup, FormArray, FormBuilder, FormControl } from '@angular/forms';
 
-export interface Names {
+export interface stoogeQuestion {
   name: string;
+  isBald: boolean;
+  isNotSmart: boolean;
 }
 
-const ELEMENT_DATA: Names[] = [
-  {name: 'Larry'},
-  {name: 'Moe'},
-  {name: 'Curly'},
-];
+
 
 /**
  * @title Table with selection
@@ -21,29 +19,46 @@ const ELEMENT_DATA: Names[] = [
   templateUrl: 'table.component.html',
 })
 export class TableComponent {
-  displayedColumns: string[] = ['name', 'radiobutton', 'select'];
-  dataSource = new MatTableDataSource<Names>(ELEMENT_DATA);
-  selection = new SelectionModel<Names>(true, []);
+  form: FormGroup;
+  questionData: stoogeQuestion[] = [
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
+    { name: 'Larry', isBald: false, isNotSmart: false },
+    { name: 'Moe', isBald: false, isNotSmart: false },
+    { name: 'Curly', isBald: false, isNotSmart: false },
+  ];
+
+  get isDumbFormArray() {
+    return this.form.controls.isDumb as FormArray;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
+  ngOnInit() {
+
   }
 
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Names): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${1}`;
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      isBald: new FormControl(),
+      isDumb: new FormArray([])
+    });
+
+    this.addCheckboxes();
   }
+
+  private addCheckboxes() {
+    this.questionData.forEach(() => this.isDumbFormArray.push(new FormControl(false)));
+  }
+
+  click() {
+
+  }
+
+  radioChange(data) {
+  }
+
+  submit() {
+    const selectedOptionIds = this.form.value.options
+      .map((checked, i) => checked ? this.questionData[i].name : null)
+      .filter(v => v !== null);
+  }
+
 }
