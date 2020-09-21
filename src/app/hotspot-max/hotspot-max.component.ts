@@ -13,6 +13,7 @@ export class HotspotMaxComponent implements OnInit {
   selectedOptionlength : number = 0;
   maxOptions: number = 2;
   maxLimitReached: boolean = false;
+  noneSelected: boolean = false;
 
   optionsData = [
     { id: 1, name: 'Maine', class: "hotspot-option-1", label: "Option 1 of 4 on Maine." },
@@ -42,13 +43,19 @@ export class HotspotMaxComponent implements OnInit {
 
   click(data) {
     this.maxLimitReached = false;
+    this.noneSelected = false;
     if(this.selectedOptionlength === this.maxOptions){
       data.setValue(false);
-      this.maxLimitReached = true;
     } 
     this.selectedOptionlength = this.form.value.options
       .map((checked, i) => checked ? this.optionsData[i].id : null)
       .filter(v => v !== null).length;    
+    if(this.selectedOptionlength === 0){
+      this.noneSelected = true;
+    }
+    if(this.selectedOptionlength === this.maxOptions){
+      this.maxLimitReached = true;
+    }
   }
 
   submit() {

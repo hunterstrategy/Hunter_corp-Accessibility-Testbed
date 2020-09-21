@@ -15,7 +15,8 @@
             </div> 
             <div role="region" id="selectionAlerts" aria-live="polite">
                 <p *ngIf="this.selectedOptionlength > 0" style="height: 0px; width: 0px; font-size: 0px;">{{this.selectedOptionlength}} selections of a maximum of {{this.maxOptions}} have been made.</p>
-                <p *ngIf="this.maxLimitReached" style="height: 0px; width: 0px; font-size: 0px;">The maximum number of selections have already been made.</p>
+                <p *ngIf="this.maxLimitReached" style="height: 0px; width: 0px; font-size: 0px;">The maximum number of selections have been made.</p>
+                <p *ngIf="this.noneSelected" style="height: 0px; width: 0px; font-size: 0px;">All options have been de-selected.</p>
             </div>
     </div>
 </div>

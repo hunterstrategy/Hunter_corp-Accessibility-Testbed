@@ -12,6 +12,7 @@ export class HotspotSingleAltComponent implements OnInit {
   selectedOptionlength: number = 0;
   maxOptions: number = 1;
   maxLimitReached: boolean = false;
+  noneSelected: boolean = false;
 
   optionsData = [
     { id: "1", class: "hotspot-option-1", name: "Salt Lake City", label: "Option 1 of 3 on Salt Lake City." },
@@ -39,14 +40,20 @@ export class HotspotSingleAltComponent implements OnInit {
   }
 
   click(data) {
+    this.noneSelected = false;
     this.maxLimitReached = false;
     if(this.selectedOptionlength === this.maxOptions){
       data.setValue(false);
-      this.maxLimitReached = true;
     } 
     this.selectedOptionlength = this.form.value.options
       .map((checked, i) => checked ? this.optionsData[i].id : null)
       .filter(v => v !== null).length;    
+    if(this.selectedOptionlength === 0){
+      this.noneSelected = true;
+    }
+    if(this.selectedOptionlength === this.maxOptions){
+      this.maxLimitReached = true;
+    }
   }
 
   submit() {
