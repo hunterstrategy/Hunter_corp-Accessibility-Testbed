@@ -23,6 +23,8 @@ import { HotspotSingleComponent } from './hotspot-single/hotspot-single.componen
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HotspotMaxComponent } from './hotspot-max/hotspot-max.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatchAltComponent } from './match-alt/match-alt.component';
+import { HotspotSingleAltComponent } from './hotspot-single-alt/hotspot-single-alt.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     TableComponent,
     HeaderComponent,
     MatchComponent,
+    MatchAltComponent,
     HotspotComponent,
     TableSelectionExample,
     HotspotSingleComponent,
+    HotspotSingleAltComponent,
     HotspotMaxComponent
   ],
   imports: [

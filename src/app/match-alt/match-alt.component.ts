@@ -1,19 +1,17 @@
-import {Component, OnInit, Input, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { HostListener, HostBinding } from '@angular/core';
 import { Element, Attribute} from '../Element';
-import { element } from 'protractor';
 
 /**
  * @title Drag&Drop disabled sorting
  */
 @Component({
-  selector: 'app-match',
-  templateUrl: 'match.component.html',
-  styleUrls: ['match.component.scss'],
+  selector: 'app-match-alt',
+  templateUrl: 'match-alt.component.html',
+  styleUrls: ['match-alt.component.scss'],
 })
 
-export class MatchComponent implements OnInit{
+export class MatchAltComponent implements OnInit{
 
   @Input() elements : Element[];
   @Input() attributes : Attribute[];
@@ -80,32 +78,23 @@ export class MatchComponent implements OnInit{
     }
     currentContainer.values.push(element);
     this.moveMessage = "Moved " + element + " to " + currentContainer.name; 
-    this.handleFocus(element, i);
+    setTimeout (() => {
+      this.handleFocus(element, i);
+   }, 250);
+    
   }
 
   handleFocus(elemId, i){
-    let parentList = document.getElementById(i);
-    let passedFocus = false;
-    //focus parent list
-    //parentList.focus();
-    //Focus Next input option if it exists
-    // if(parentList.children[0]){
-    //   //find next elem of below
-    //   let nextElem = document.getElementById(parentList.children[0].id);
-    //   nextElem.focus();
-    //   return;
-    // }
-    //Focus first item from the avialable list that is not the current button option
-    this.arrayOptionList.forEach(optionList => {
-      let tempListElement = document.getElementById(optionList.name);
-      Array.from(tempListElement.children).forEach(element => {
-        if(element.id !== elemId && !passedFocus){
-          let nextElem = document.getElementById(element.id);
-          passedFocus = true;
-          nextElem.focus();
-        }
-      });
-    })
+      //find next elem of below
+      this.arrayOptionList.forEach(optionList => {
+        let tempListElement = document.getElementById(optionList.name);
+        Array.from(tempListElement.children).forEach(element => {
+          if(element.id === elemId){
+            let nextElem = document.getElementById(element.id);
+            nextElem.focus();
+          }
+        });
+      })
   }
 }
 
