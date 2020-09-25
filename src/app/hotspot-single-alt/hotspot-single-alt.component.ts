@@ -6,6 +6,12 @@ import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
   templateUrl: './hotspot-single-alt.component.html',
   styleUrls: ['./hotspot-single-alt.component.scss']
 })
+
+/**
+ * Hotspot Single component is the same as hotspotMaxComponent but configured to one selection.
+ * This is meant to stand in contrast to the hotspotSingleComponent which uses radio buttons instead.
+ * No siginificant implementation differences from hotspotMaxComponent.
+ */
 export class HotspotSingleAltComponent implements OnInit {
 
   form: FormGroup;

@@ -2,15 +2,17 @@ import {Component, OnInit, Input} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Element, Attribute} from '../Element';
 
-/**
- * @title Drag&Drop disabled sorting
- */
+
 @Component({
   selector: 'app-match-alt',
   templateUrl: 'match-alt.component.html',
   styleUrls: ['match-alt.component.scss'],
 })
 
+/**
+ * MatchAltComponent is basically the same as MatchComponent but uses a different focus implementation.
+ * No siginificant implementation differences.
+ */
 export class MatchAltComponent implements OnInit{
 
   @Input() elements : Element[];
@@ -83,7 +85,14 @@ export class MatchAltComponent implements OnInit{
    }, 250);
     
   }
-
+  
+  /**
+   * Because the screen reader functionality is new, it is uncertain the best means of handling focus.
+   * this implementation of handle focus maintains focus on the selected item as it is moved to a different list. 
+   *
+   * @param elemId - Dom id of element
+   * @param i - index of element
+   */
   handleFocus(elemId, i){
       //find next elem of below
       this.arrayOptionList.forEach(optionList => {
