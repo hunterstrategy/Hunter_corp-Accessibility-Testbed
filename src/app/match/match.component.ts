@@ -48,18 +48,18 @@ export class MatchComponent implements OnInit {
   arrayOptionList = [
     {
       name: "Options",
-      values: ["2, 6, 10, 14", "1, 2, 8, 16", "4, 12, 20, 28"],
+      values: ["2, 6, 10, 14", "2, 4, 8, 16", "4, 12, 20, 28"],
     },
     {
       name: "Multiply by 2",
       values: [],
     },
     {
-      name: "Text: Add 4",
+      name: "Add 4",
       values: [],
     },
     {
-      name: "Text: Add 8",
+      name: "Add 8",
       values: [],
     },
   ];
