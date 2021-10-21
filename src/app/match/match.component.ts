@@ -91,12 +91,16 @@ export class MatchComponent implements OnInit {
     var index1 = this.arrayOptionList[0].values.indexOf(element);
     var index2 = this.arrayOptionList[1].values.indexOf(element);
     var index3 = this.arrayOptionList[2].values.indexOf(element);
+    var index4 = this.arrayOptionList[3].values.indexOf(element);
+
     if (index1 != -1) {
       this.arrayOptionList[0].values.splice(index1, 1);
     } else if (index2 != -1) {
       this.arrayOptionList[1].values.splice(index2, 1);
     } else if (index3 != -1) {
       this.arrayOptionList[2].values.splice(index3, 1);
+    } else if (index4 != -1) {
+      this.arrayOptionList[3].values.splice(index4, 1);
     }
     currentContainer.values.push(element);
     this.moveMessage = "Moved " + element + " to " + currentContainer.name;
